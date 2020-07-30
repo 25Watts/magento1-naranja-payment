@@ -1,0 +1,9 @@
+app/code/community/Naranja app/code/community/Naranja
+app/design/frontend/base/default/layout/naranja_payment.xml app/design/frontend/base/default/layout/naranja_payment.xml
+app/design/frontend/base/default/template/naranja_payment app/design/frontend/base/default/template/naranja_payment
+app/etc/modules/* app/etc/modules/
+app/locale/en_US/* app/locale/en_US/
+app/locale/es_AR/* app/locale/es_AR/
+app/locale/es_ES/* app/locale/es_ES/
+lib/Naranja lib/Naranja
+skin/frontend/base/default/naranja_payment skin/frontend/base/default/naranja_payment

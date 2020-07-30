@@ -1,0 +1,8 @@
+#dt_method_naranja_webcheckout > label:after {
+    display: inline-block;
+    vertical-align:middle;
+    content:url("../images/logo.svg");
+    height: 27px;
+    width: 27px;
+    position: relative;
+  }
