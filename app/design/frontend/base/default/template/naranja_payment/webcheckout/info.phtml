@@ -3,9 +3,7 @@
 
 <?php if(Mage::app()->getRequest()->getRouteName()=="sales"): ?>
     
-    <?php
-        $info_payment = $this->getInfoPayment();
-    ?>
+    <?php $info_payment = $this->getInfoPayment(); ?>
 
     <?php foreach($info_payment as $info): ?>
         <p><?php echo $info['text']; ?></p>

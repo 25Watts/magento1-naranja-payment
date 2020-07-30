@@ -48,18 +48,11 @@ extends Mage_Payment_Helper_Data
         $payment = $order->getPayment();
         $infoPayments = array();
         $fields = array(
-            array("field" => "cardholderName", "title" => "Card Holder Name: %s"),
-            array("field" => "trunc_card", "title" => "Card Number: %s"),
-            array("field" => "payment_method", "title" => "Payment Method: %s"),
-            array("field" => "expiration_date", "title" => "Expiration Date: %s"),
             array("field" => "installments", "title" => "Installments: %s"),
-            array("field" => "statement_descriptor", "title" => "Statement Descriptor: %s"),
-            array("field" => "payment_id", "title" => "Payment id (MercadoPago): %s"),
+            array("field" => "id", "title" => "Payment id: %s"),
             array("field" => "status", "title" => "Payment Status: %s"),
-            array("field" => "status_detail", "title" => "Payment Detail: %s"),
-            array("field" => "activation_uri", "title" => "Generate Ticket"),
-            array("field" => "payment_id_detail", "title" => "Mercado Pago Payment Id: %s")
-
+            array("field" => "date_created", "title" => "Created at: %s"),
+            array("field" => "payment_type", "title" => "Payment type: %s")
         );
 
         foreach ($fields as $field) {
@@ -70,14 +63,6 @@ extends Mage_Payment_Helper_Data
                     "value" => $this->__($payment->getAdditionalInformation($field['field']))
                 );
             }
-        }
-
-        if ($payment->getAdditionalInformation('payer_identification_type') != "") {
-            $text = $this->__($payment->getAdditionalInformation('payer_identification_type') . ': ' . $payment->getAdditionalInformation('payer_identification_number'));
-            $infoPayments[$payment->getAdditionalInformation('payer_identification_type')] = array(
-                "text"  => $text,
-                "value" => $payment->getAdditionalInformation('payer_identification_number')
-            );
         }
 
         return $infoPayments;
