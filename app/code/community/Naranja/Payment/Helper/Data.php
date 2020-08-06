@@ -7,6 +7,7 @@ extends Mage_Payment_Helper_Data
     const XML_PATH_CLIENT_ID = 'payment/naranja_payment/client_id';
     const XML_PATH_CLIENT_SECRET = 'payment/naranja_payment/client_secret';
     const XML_PATH_ENVIRONMENT = 'payment/naranja_payment/environment';
+    const XML_PATH_CALLBACK_URL = 'payment/naranja_payment/callback_url';
 
     protected $_apiInstance;
 
@@ -66,5 +67,15 @@ extends Mage_Payment_Helper_Data
         }
 
         return $infoPayments;
+    }
+
+    public function getCallbackUrl()
+    {
+        $callbackUrl = Mage::getStoreConfig(self::XML_PATH_CALLBACK_URL);
+
+        if (empty($callbackUrl))
+            return Mage::getUrl('naranja_payment/notifications/webcheckout');
+
+        return trim($callbackUrl);
     }
 }

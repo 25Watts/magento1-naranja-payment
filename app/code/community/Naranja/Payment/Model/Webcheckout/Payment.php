@@ -20,14 +20,23 @@ extends Mage_Payment_Model_Method_Abstract
     protected $_canCreateBillingAgreement = true;
     protected $_canReviewPayment = true;
 
+    protected $_helper;
+
     const LOG_FILE = 'naranja-webcheckout.log';
     const CHECKOUT_FAILURE_URL = 'checkout/onepage/failure';
     const CHECKOUT_SUCCESS_URL = 'checkout/onepage/success';
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->_helper = Mage::helper('naranja_payment/data');
+    }
+
     public function createPaymentRequest()
     {
         try {
-            $apiInstance = Mage::helper('naranja_payment/data')->getApiInstance();
+            $apiInstance = $this->_helper->getApiInstance();
             $orderIncrementId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
             $customer = Mage::getSingleton('customer/session')->getCustomer();
@@ -100,7 +109,7 @@ extends Mage_Payment_Model_Method_Abstract
 
             // Agregamos el requests redirect al paymenRequests
             $paymentRequest->setRequestCreationRedirect($requestsCreationRedirect);
-            $paymentRequest->setCallbackUrl(Mage::getUrl('naranja_payment/notifications/webcheckout'));
+            $paymentRequest->setCallbackUrl($this->_helper->getCallbackUrl());
 
             // Ejecutamos el metodo
             $response = $apiInstance->createPaymentRequest($paymentRequest);
@@ -108,7 +117,7 @@ extends Mage_Payment_Model_Method_Abstract
 
             return $response;
         } catch (Exception $e) {
-            Mage::helper('naranja_payment/data')->log("ERROR CREATEPAYMENTREQUEST: " . $e->getMessage());
+            $this->_helper->log("ERROR CREATEPAYMENTREQUEST: " . $e->getMessage());
 
             return [];
         }

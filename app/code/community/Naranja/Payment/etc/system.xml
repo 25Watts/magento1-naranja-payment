@@ -36,6 +36,14 @@
                             <show_in_store>0</show_in_store>
                             <comment></comment>
                         </environment>
+                        <callback_url translate="label comment">
+                            <label>Callback Url</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If empty, the module will use default callback url (naranja_payment/notifications/webcheckout)</comment>
+                        </callback_url>
                         <!-- <heading_order_status translate="label">
                             <label>Order Status Options</label>
                             <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
