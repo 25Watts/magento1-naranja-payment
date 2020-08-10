@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>naranja_payment/css/styles.css</name>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+    <naranja_payment_webcheckout_success>
+        <reference name="content">
+            <block type="naranja_payment/webcheckout_success" name="naranja_payment.success" as="success"/>
+        </reference>
+    </naranja_payment_webcheckout_success>
+</layout>

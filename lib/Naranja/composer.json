@@ -1,0 +1,46 @@
+{
+    "name": "watts25/naranja-payment-sdk",
+    "description": "Naranja Ranty - Checkout SDK",
+    "version": "0.1.4",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api",
+        "payments",
+        "naranja"
+    ],
+    "homepage": "https://naranja.com",
+    "license": "unlicense",
+    "authors": [
+        {
+            "name": "Naranja Engineering",
+            "homepage": "https://naranja.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.6"
+    },
+    "autoload": {
+        "psr-4": { 
+            "Naranja\\Security\\" : "src/generated/security-sdk/lib/",
+            "Naranja\\CheckoutApi\\" : "src/generated/checkoutApi-sdk/lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { 
+            "Naranja\\Security\\" : "src/generated/security-sdk/test/",
+            "Naranja\\CheckoutApi\\" :  "src/generated/checkoutApi-sdk/test/"
+        }
+    }
+}

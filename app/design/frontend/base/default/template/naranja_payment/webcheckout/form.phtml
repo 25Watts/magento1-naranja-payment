@@ -1,0 +1,14 @@
+<?php
+/**
+ * @see Naranja_Payment_Block_WebCheckout_Form
+ */
+?>
+<?php if ($this->getInstructions()): ?>
+    <ul class="form-list checkout-agreements" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
+        <li>
+            <div class="<?php echo $this->getMethodCode() ?>-instructions-content agreement-content">
+                <?php echo nl2br($this->getInstructions()) ?>
+            </div>
+        </li>
+    </ul>
+<?php endif; ?>

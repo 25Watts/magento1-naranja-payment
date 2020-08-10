@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Naranja_Payment>
+            <version>0.1.0</version>
+        </Naranja_Payment>
+    </modules>
+
+    <global>
+        <models>
+            <naranja_payment>
+                <class>Naranja_Payment_Model</class>
+            </naranja_payment>
+        </models>
+        <blocks>
+            <naranja_payment>
+                <class>Naranja_Payment_Block</class>
+            </naranja_payment>
+        </blocks>
+        <helpers>
+            <naranja_payment>
+                <class>Naranja_Payment_Helper</class>
+            </naranja_payment>
+        </helpers>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <observer>
+                        <class>Naranja_Payment_Model_Observer</class>
+                        <method>paymentMethodIsActive</method>
+                    </observer>
+                </observers>
+            </payment_method_is_active>
+        </events>
+    </global>
+
+    <frontend>
+        <routers>
+            <naranja_payment>
+                <use>standard</use>
+                <args>
+                    <module>Naranja_Payment</module>
+                    <frontName>naranja_payment</frontName>
+                </args>
+            </naranja_payment>
+        </routers>
+        <translate>
+            <modules>
+                <naranja_payment>
+                    <files>
+                        <default>Naranja_Payment.csv</default>
+                    </files>
+                </naranja_payment>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <naranja_payment>
+                    <file>naranja_payment.xml</file>
+                </naranja_payment>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <naranja_payment>
+                    <files>
+                        <default>Naranja_Payment.csv</default>
+                    </files>
+                </naranja_payment>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <naranja_payment>
+                    <file>naranja_payment.xml</file>
+                </naranja_payment>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <default>
+        <payment>
+            <naranja_payment>
+                <logs>0</logs>
+                <environment>sandbox</environment>
+            </naranja_payment>
+
+            <naranja_webcheckout>
+                <active>0</active>
+                <model>naranja_payment/webcheckout_payment</model>
+                <title>Pagar con Naranja</title>
+                <allowspecific>0</allowspecific>
+                <sort_order>-1</sort_order>
+                <sandbox_mode>0</sandbox_mode>
+            </naranja_webcheckout>
+        </payment>
+    </default>
+
+    <crontab>
+        <jobs>
+            <!-- <order_status_inspector>
+                <schedule>
+                    <config_path>payment/mercadopago/time_between_verifications</config_path>
+                </schedule>
+                <run>
+                    <model>mercadopago/cron_order::updateOrderStatus</model>
+                </run>
+            </order_status_inspector> -->
+        </jobs>
+    </crontab>
+
+</config>
