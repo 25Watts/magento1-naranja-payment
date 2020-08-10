@@ -1,0 +1,9 @@
+{
+    "name": "watts25/magento1-naranja-payment",
+    "type": "magento-module",
+    "description": "Naranja payment method module",
+    "homepage": "https://github.com/25Watts/magento1-naranja-payment",
+    "require": {
+        "php": ">=5.6"
+    }
+}
