@@ -16,27 +16,27 @@ extends Mage_Core_Controller_Front_Action
     public function webcheckoutAction()
     {
         try {
-            $this->_requestData = json_decode(file_get_contents('php://input'), true); //$this->getRequest()->getParams();
+            $this->_requestData = json_decode(file_get_contents('php://input'));
             $this->_helper = Mage::helper('naranja_payment/data');
 
-            if (empty($this->_requestData['payment_id']) || empty($this->_requestData['external_payment_id'])) {
+            if (empty($this->_requestData->payment_id) || empty($this->_requestData->external_payment_id)) {
                 Mage::throwException($this->_helper->__('Error Payment notification is expected'));
             }
 
-            $paymentId = $this->_requestData['payment_id'];
-            $this->_order = Mage::getModel('sales/order')->loadByIncrementId($this->_requestData["external_reference"]);
+            $paymentId = $this->_requestData->payment_id;
+            $this->_order = Mage::getModel('sales/order')->loadByIncrementId($this->_requestData->external_payment_id);
 
             if (empty($this->_order) || empty($this->_order->getId())) {
-                Mage::throwException($this->_helper->__('Error Order Not Found in Magento: ') . $this->_requestData['external_payment_id']);
+                Mage::throwException($this->_helper->__('Error Order Not Found in Magento: ') . $this->_requestData->external_payment_id);
             }
 
             if ($this->_order->getState() == Mage_Sales_Model_Order::STATE_CANCELED) {
-                Mage::throwException($this->_helper->__('Order already canceled: ') . $this->_requestData['external_payment_id']);
+                Mage::throwException($this->_helper->__('Order already canceled: ') . $this->_requestData->external_payment_id);
             }
 
             $this->_payment = $this->_helper->getApiInstance()->getPayment($paymentId);
 
-            if (empty($payment)) {
+            if (empty($this->_payment)) {
                 Mage::throwException($this->_helper->__('Error Payment not found in Naranja'));
             }
 
@@ -50,7 +50,7 @@ extends Mage_Core_Controller_Front_Action
                 )
             );
 
-            switch ($this->_requestData['status']) {
+            switch ($this->_requestData->status) {
                 case 'APPROVED':
                     $message = $this->_helper->__('Transaction automatically approved by Naranja');
 

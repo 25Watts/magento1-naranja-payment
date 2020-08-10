@@ -58,10 +58,10 @@ extends Mage_Payment_Helper_Data
 
         foreach ($fields as $field) {
             if ($payment->getAdditionalInformation($field['field']) != "") {
-                $text = $this->__($field['title'], $this->__($payment->getAdditionalInformation($field['field'])));
+                $text = $this->__($field['title'], $payment->getAdditionalInformation($field['field']));
                 $infoPayments[$field['field']] = array(
                     "text"  => $text,
-                    "value" => $this->__($payment->getAdditionalInformation($field['field']))
+                    "value" => $payment->getAdditionalInformation($field['field'])
                 );
             }
         }

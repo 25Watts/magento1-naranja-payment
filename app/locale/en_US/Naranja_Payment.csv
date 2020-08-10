@@ -1,0 +1,22 @@
+"Installments: %s", "Installments: %s"
+"Payment id: %s", "Payment id: %s"
+"Payment Status: %s", "Payment Status: %s"
+"Created at: %s", "Created at: %s"
+"Payment type: %s", "Payment type: %s"
+"Error Payment notification is expected","Error Payment notification is expected"
+"Error Order Not Found in Magento: ","Error Order Not Found in Magento: "
+"Order already canceled: ","Order already canceled: "
+"Error Payment not found in Naranja","Error Payment not found in Naranja"
+"Transaction automatically approved by Naranja","Transaction automatically approved by Naranja"
+"Transaction automatically denied by Naranja","Transaction automatically denied by Naranja"
+"-- Please Select --","-- Please Select --"
+Sandbox,Sandbox
+Production,Production
+"Payment model does not provided.","Payment model does not provided."
+Naranja,Naranja
+Advanced,Advanced
+Environment,Environment
+"Log to File","Log to File"
+Credentials,Credentials
+"Client Id","Client Id"
+"Access Token","Access Token"
