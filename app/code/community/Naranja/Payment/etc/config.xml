@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Naranja_Payment>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Naranja_Payment>
     </modules>
 
@@ -26,7 +26,8 @@
             <payment_method_is_active>
                 <observers>
                     <observer>
-                        <class>Naranja_Payment_Model_Observer</class>
+                        <type>singleton</type>
+                        <class>naranja_payment/observer</class>
                         <method>paymentMethodIsActive</method>
                     </observer>
                 </observers>

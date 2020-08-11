@@ -8,6 +8,7 @@ extends Mage_Payment_Helper_Data
     const XML_PATH_CLIENT_SECRET = 'payment/naranja_payment/client_secret';
     const XML_PATH_ENVIRONMENT = 'payment/naranja_payment/environment';
     const XML_PATH_CALLBACK_URL = 'payment/naranja_payment/callback_url';
+    const XML_PATH_ENABLED_CUSTOMER_GROUP = 'payment/naranja_payment/enabled_customer_group';
 
     protected $_apiInstance;
 
@@ -77,5 +78,12 @@ extends Mage_Payment_Helper_Data
             return Mage::getUrl('naranja_payment/notifications/webcheckout');
 
         return trim($callbackUrl);
+    }
+
+    public function getEnabledCustomerGroupId()
+    {
+        $customerGroupId = Mage::getStoreConfig(self::XML_PATH_ENABLED_CUSTOMER_GROUP);
+
+        return $customerGroupId;
     }
 }

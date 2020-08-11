@@ -4,16 +4,18 @@ class Naranja_Payment_Model_Observer
 {
     public function paymentMethodIsActive(Varien_Event_Observer $observer)
     {
-        $event           = $observer->getEvent();
-        $method          = $event->getMethodInstance();
-        $result          = $event->getResult();
-        $currencyCode    = Mage::app()->getStore()->getCurrentCurrencyCode();
+        $event = $observer->getEvent();
+        $method = $event->getMethodInstance();
+        $result = $event->getResult();
         $code = $method->getCode();
+        $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+        $enabledCustomerGroupId = Mage::helper('naranja_payment/data')->getEnabledCustomerGroupId();
 
-        if ($this->isAdmin()) {
-            if ($code == 'naranja_webcheckout') {
-
+        if ($code == 'naranja_webcheckout') {
+            if ($this->isAdmin() || $groupId != $enabledCustomerGroupId) {
                 $result->isAvailable = false;
+            } else {
+                $result->isAvailable = true;
             }
         }
     }
