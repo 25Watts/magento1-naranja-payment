@@ -3,6 +3,11 @@
     "type": "magento-module",
     "description": "Naranja payment method module",
     "homepage": "https://github.com/25Watts/magento1-naranja-payment",
+    "version": "0.1.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
     "require": {
         "php": ">=5.6"
     }

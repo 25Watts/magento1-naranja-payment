@@ -36,6 +36,14 @@
                             <show_in_store>0</show_in_store>
                             <comment></comment>
                         </environment>
+                        <enabled_customer_group translate="label">
+                            <label>Enabled for Customer Group</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_customer_group</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled_customer_group>
                         <callback_url translate="label comment">
                             <label>Callback Url</label>
                             <frontend_type>text</frontend_type>
